@@ -2,7 +2,7 @@ import {connectDB} from "@/util/database";
 import {ObjectId} from "mongodb";
 
 export default async function Edit(req, resp) {
-    console.log(req.body)
+    // console.log(req.body)
     if (req.method === 'POST') {
         if (req.body.title === '' || req.body.content === '') {
             return resp.status(400).json('입력안한거있음');
