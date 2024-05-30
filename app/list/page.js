@@ -13,7 +13,8 @@ export default async function List() {
                     <div className="list-item" key={i}>
                         <Link prefetch={false} href={`/detail/${item._id}`} className="title">{item.title}</Link>
                         <Link prefetch={false} href={`/detail/${item._id}`} className="content">{item.content}</Link>
-                        <DataLink/>
+                        {/*<DataLink/>*/}
+                        <Link href={`/edit/${item._id}`}>✏수정✏</Link>
                     </div>
                 )
             }
