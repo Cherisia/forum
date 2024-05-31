@@ -13,11 +13,17 @@ export default function ListItem(props) {
                 <Link href={`/edit/${item._id}`}>✏수정✏</Link>
                 <span onClick={() => {
                     fetch('/api/post/delete', {
-                        method: 'POST',
-                        body: item._id.toString()
+                        method: 'DELETE',
+                        body: item._id
                         // redirect: 'follow'
-                    }).then(() => {
-                        window.location.href = '/list';
+                    }).then((r) => {
+                        if (r.status === 200) {
+                            return r.json();
+                        } else {
+
+                        }
+                    }).then((result) => {
+                        location.href = '/list';
                     });
                 }}>🗑️삭제🗑</span>
             </div>
