@@ -11,7 +11,7 @@ export default function ListItem(props) {
                 <Link prefetch={false} href={`/detail/${item._id}`} className="content">{item.content}</Link>
                 {/*<DataLink/>*/}
                 <Link href={`/edit/${item._id}`}>✏수정✏</Link>
-                <span onClick={() => {
+                <span onClick={(e) => {
                     fetch('/api/post/delete', {
                         method: 'DELETE',
                         body: item._id
@@ -22,8 +22,13 @@ export default function ListItem(props) {
                         } else {
 
                         }
+
                     }).then((result) => {
-                        location.href = '/list';
+                        e.target.parentElement.style.opacity = 0;
+                        setTimeout(() => {
+                            // e.target.parentElement.style.display = 'none';
+                            window.location.reload();
+                        }, 1000);
                     });
                 }}>🗑️삭제🗑</span>
             </div>
