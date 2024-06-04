@@ -4,6 +4,7 @@ import Link from "next/link";
 import LoginBtn from "@/app/LoginBtn";
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/pages/api/auth/[...nextauth]";
+import LogoutBtn from "@/app/LogoutBtn";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -22,7 +23,10 @@ export default async function RootLayout({children}) {
             <Link href="/" className="logo">Appleforum</Link>
             <Link href="/list">List</Link>
             <Link href="/write">Write</Link>
-            <LoginBtn/>
+            {
+                session === null ? <LoginBtn/> : <LogoutBtn/>
+            }
+
         </div>
         {children}
         </body>
