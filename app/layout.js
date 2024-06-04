@@ -15,7 +15,6 @@ export const metadata = {
 
 export default async function RootLayout({children}) {
     let session = await getServerSession(authOptions);
-    console.log(session)
     return (
         <html lang="en">
         <body className={inter.className}>
@@ -23,6 +22,7 @@ export default async function RootLayout({children}) {
             <Link href="/" className="logo">Appleforum</Link>
             <Link href="/list">List</Link>
             <Link href="/write">Write</Link>
+            <Link href="/register">회원가입</Link>
             {
                 session === null ? <LoginBtn/> : <LogoutBtn/>
             }
