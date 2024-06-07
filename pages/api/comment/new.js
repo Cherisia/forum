@@ -16,7 +16,10 @@ export default async function New(req, resp) {
                 // console.log(comment);
                 const db = (await connectDB).db('forum');
                 let result = await db.collection('comment').insertOne(comment);
-                return resp.status(200).json('success!!!!!!!!');
+                // console.log(result);
+                let commentList = await db.collection('comment').find({parent: comment.parent}).toArray();
+                // console.log(commentList)
+                return resp.status(200).json(commentList);
             }
         } catch (e) {
             return resp.status(500).json('Internal Server Error');
